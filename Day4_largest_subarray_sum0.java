@@ -16,7 +16,7 @@ public class Day4_largest_subarray_sum0 {
             else if(hashMap.get(sum) == null){
                 hashMap.put(sum,i);
             }
-            // if the sum is present then get all the elements from i till the index of first occurance of sum
+            // if the sum is present then get all the elements from i till the index of first ocurance of sum
             else if(hashMap.get(sum) != null){
                 index=hashMap.get(sum);
                 max = Math.max(max,i-index);
