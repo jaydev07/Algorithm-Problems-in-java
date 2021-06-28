@@ -44,7 +44,7 @@ public class Day13_q5_ValidParentheses {
 			}
 		}
 		
-		if(ans) {
+		if(ans && stack.size()==0) {
 			System.out.println("Entered String is Valid");
 		}
 		else{
