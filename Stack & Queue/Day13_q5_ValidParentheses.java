@@ -1,54 +1,41 @@
 import java.util.*;
 public class Day13_q5_ValidParentheses {
-	public static void main(String args[]) {
-		Scanner sc=new Scanner(System.in);
-		String s;
-		boolean ans=true;
+	public boolean isValid(String s) {
+        if(s.length()==0){
+            return true;
+        }
+        else if(s.length()==1){
+            return false;
+        }
 		Stack<Character> stack=new Stack<Character>();
-		System.out.println("Enter the input string:");
-		s=sc.nextLine();
 		
 		for(int i=0;i<s.length();i++) {
 			if(s.charAt(i)=='(' || s.charAt(i)=='{' || s.charAt(i)=='[') {
 				stack.push(s.charAt(i));
 			}
 			else if(s.charAt(i)==')') {
-				while(stack.size()>0 && stack.peek()!='(') {
-					stack.pop();
-				}
-				if(stack.size()==0) {
-					ans=false;
-					break;
-				}
+                if(stack.size()<=0 || stack.peek()!='('){
+                    return false;
+                }
 				stack.pop();
 			}
 			else if(s.charAt(i)==']') {
-				while(stack.size()>0 && stack.peek()!='[') {
-					stack.pop();
-				}
-				if(stack.size()==0) {
-					ans=false;
-					break;
-				}
+				if(stack.size()<=0 || stack.peek()!='['){
+                    return false;
+                }
 				stack.pop();
 			}
 			else if(s.charAt(i)=='}') {
-				while(stack.size()>0 && stack.peek()!='{') {
-					stack.pop();
-				}
-				if(stack.size()==0) {
-					ans=false;
-					break;
-				}
+				if(stack.size()<=0 || stack.peek()!='{'){
+                    return false;
+                }
 				stack.pop();
 			}
 		}
 		
-		if(ans && stack.size()==0) {
-			System.out.println("Entered String is Valid");
+		if(stack.size()==0) {
+            return true;
 		}
-		else{
-			System.out.println("Entered String is Invalid");
-		}
-	}
+        return false;
+    }
 }
